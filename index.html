@@ -1,17 +1,38 @@
-Claro. Abaixo está tudo em um único arquivo index.html, com HTML, CSS e JavaScript juntos. É só copiar, salvar como index.html e abrir no navegador.
+Claro — abaixo está uma versão bem mais completa e interativa, ainda em um único index.html. Ela inclui:
+
+História detalhada do Athletico
+Linha do tempo interativa
+História da Ligga Arena
+Títulos e conquistas
+Jogadores históricos
+História e características da torcida
+Curiosidades
+Modal com informações adicionais
+Contadores animados
+Quiz do Furacão
+Menu responsivo
+Cards interativos
+Botão para alternar tema
+Navegação suave
+
+Salve tudo abaixo como index.html.
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Athletico Paranaense | Furacão</title>
+    <title>Athletico Paranaense | História do Furacão</title>
 
     <style>
-        /* =========================
+
+        /* =====================================================
            CONFIGURAÇÕES GERAIS
-        ========================= */
+        ===================================================== */
 
         * {
             margin: 0;
@@ -20,30 +41,82 @@ Claro. Abaixo está tudo em um único arquivo index.html, com HTML, CSS e JavaSc
             scroll-behavior: smooth;
         }
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #0b0b0b;
-            color: white;
+        :root {
+            --vermelho: #e30613;
+            --vermelho-escuro: #9d0009;
+            --preto: #080808;
+            --preto-2: #111111;
+            --cinza: #1c1c1c;
+            --cinza-claro: #cccccc;
+            --branco: #ffffff;
         }
 
-        /* =========================
-           MENU
-        ========================= */
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--preto);
+            color: var(--branco);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .titulo-secao {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .linha {
+            width: 80px;
+            height: 5px;
+            background: var(--vermelho);
+            margin: 15px auto 40px;
+        }
+
+        .texto-centro {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+            color: var(--cinza-claro);
+            font-size: 17px;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
 
         header {
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 9999;
 
-            background: #050505;
-            border-bottom: 3px solid #e30613;
+            background: rgba(5, 5, 5, .97);
+
+            border-bottom: 3px solid var(--vermelho);
+
+            box-shadow: 0 5px 20px rgba(0, 0, 0, .5);
         }
 
         nav {
-            max-width: 1200px;
-            margin: auto;
-
-            padding: 15px 25px;
+            min-height: 75px;
 
             display: flex;
             align-items: center;
@@ -51,61 +124,64 @@ Claro. Abaixo está tudo em um único arquivo index.html, com HTML, CSS e JavaSc
         }
 
         .logo {
-            width: 55px;
-            height: 55px;
+            width: 50px;
+            height: 50px;
+
+            background: var(--vermelho);
+
+            border-radius: 50%;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
-            border-radius: 50%;
-
-            background: #e30613;
-
-            font-size: 18px;
             font-weight: bold;
+
+            box-shadow: 0 0 20px rgba(227, 6, 19, .4);
         }
 
-        nav h1 {
+        .nome-clube {
             font-size: 20px;
+            font-weight: bold;
         }
 
         nav ul {
-            display: flex;
-            gap: 25px;
             list-style: none;
+
+            display: flex;
+            gap: 22px;
         }
 
-        nav ul a {
+        nav ul li a {
             color: white;
-            text-decoration: none;
             font-weight: bold;
-
-            transition: 0.3s;
+            transition: .3s;
         }
 
-        nav ul a:hover {
-            color: #e30613;
+        nav ul li a:hover {
+            color: var(--vermelho);
         }
 
         .menu-btn {
             display: none;
 
-            background: transparent;
+            background: none;
             border: none;
 
             color: white;
+
             font-size: 30px;
 
             cursor: pointer;
         }
 
-        /* =========================
+
+        /* =====================================================
            HERO
-        ========================= */
+        ===================================================== */
 
         .hero {
-            min-height: 90vh;
+            min-height: 92vh;
 
             display: flex;
             align-items: center;
@@ -114,176 +190,344 @@ Claro. Abaixo está tudo em um único arquivo index.html, com HTML, CSS e JavaSc
             text-align: center;
 
             background:
-                linear-gradient(
-                    rgba(0, 0, 0, 0.75),
-                    rgba(0, 0, 0, 0.95)
+                radial-gradient(
+                    circle at center,
+                    rgba(227, 6, 19, .25),
+                    transparent 45%
                 ),
                 linear-gradient(
                     135deg,
-                    #e30613,
-                    #050505 60%
+                    #100000,
+                    #050505 55%,
+                    #190000
                 );
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "🌪";
+
+            position: absolute;
+
+            font-size: 400px;
+
+            opacity: .025;
+
+            right: -100px;
+            top: 50%;
+
+            transform: translateY(-50%);
         }
 
         .hero-content {
-            max-width: 850px;
-            padding: 30px;
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
         }
 
         .hero small {
-            color: #e30613;
+            color: var(--vermelho);
 
             font-weight: bold;
 
-            letter-spacing: 4px;
+            letter-spacing: 5px;
         }
 
-        .hero h2 {
-            margin: 20px 0;
+        .hero h1 {
+            font-size: clamp(55px, 10vw, 120px);
 
-            font-size: 100px;
             text-transform: uppercase;
 
+            margin: 15px 0;
+
             text-shadow:
-                5px 5px 0 #e30613,
-                10px 10px 25px black;
+                5px 5px 0 var(--vermelho),
+                10px 10px 30px black;
         }
 
         .hero p {
-            font-size: 20px;
-            line-height: 1.6;
-
             color: #ddd;
+            font-size: 20px;
 
-            margin-bottom: 30px;
+            max-width: 750px;
+
+            margin: 0 auto 35px;
         }
 
         .botao {
             display: inline-block;
 
-            padding: 15px 30px;
+            padding: 14px 28px;
 
             border-radius: 5px;
 
-            background: #e30613;
+            background: var(--vermelho);
+
             color: white;
 
-            border: 2px solid #e30613;
-
-            text-decoration: none;
+            border: 2px solid var(--vermelho);
 
             font-weight: bold;
 
             cursor: pointer;
 
-            transition: 0.3s;
+            transition: .3s;
         }
 
         .botao:hover {
             background: white;
-            color: #e30613;
+            color: var(--vermelho);
 
-            transform: scale(1.05);
+            transform: translateY(-3px);
         }
 
-        /* =========================
-           SEÇÕES
-        ========================= */
-
-        section {
-            padding: 90px 20px;
+        .botao-secundario {
+            background: transparent;
+            margin-left: 10px;
         }
 
-        .container {
-            max-width: 1100px;
-            margin: auto;
+
+        /* =====================================================
+           CONTADORES
+        ===================================================== */
+
+        .numeros {
+            background: #050505;
+
+            padding: 35px 0;
+
+            border-bottom: 1px solid #222;
         }
 
-        section h2 {
-            text-align: center;
-            font-size: 40px;
-        }
-
-        .linha {
-            width: 80px;
-            height: 5px;
-
-            margin: 15px auto 40px;
-
-            background: #e30613;
-        }
-
-        .texto {
-            max-width: 900px;
-
-            margin: 15px auto;
-
-            color: #ccc;
-
-            text-align: center;
-
-            line-height: 1.8;
-
-            font-size: 17px;
-        }
-
-        /* =========================
-           HISTÓRIA
-        ========================= */
-
-        #historia {
-            background: #151515;
-        }
-
-        .cards {
-            margin-top: 50px;
-
+        .numeros-grid {
             display: grid;
 
             grid-template-columns:
-                repeat(3, 1fr);
+                repeat(4, 1fr);
 
-            gap: 25px;
+            gap: 20px;
+
+            text-align: center;
         }
 
-        .card {
-            padding: 30px;
+        .numero h3 {
+            color: var(--vermelho);
 
-            background: #222;
+            font-size: 40px;
+        }
 
-            border-left: 5px solid #e30613;
+        .numero p {
+            color: #aaa;
+        }
+
+
+        /* =====================================================
+           HISTÓRIA
+        ===================================================== */
+
+        #historia {
+            background: #121212;
+        }
+
+        .historia-intro {
+            max-width: 900px;
+            margin: 0 auto 60px;
+        }
+
+        .historia-intro p {
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .timeline {
+            position: relative;
+
+            max-width: 900px;
+
+            margin: auto;
+        }
+
+        .timeline::before {
+            content: "";
+
+            position: absolute;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            width: 4px;
+
+            height: 100%;
+
+            background: var(--vermelho);
+        }
+
+        .evento {
+            width: 50%;
+
+            padding: 20px 40px;
+
+            position: relative;
+        }
+
+        .evento:nth-child(odd) {
+            left: 0;
+
+            text-align: right;
+        }
+
+        .evento:nth-child(even) {
+            left: 50%;
+        }
+
+        .evento::after {
+            content: "";
+
+            position: absolute;
+
+            top: 30px;
+
+            width: 18px;
+            height: 18px;
+
+            border-radius: 50%;
+
+            background: var(--vermelho);
+
+            border: 4px solid #111;
+
+            box-shadow: 0 0 0 2px var(--vermelho);
+        }
+
+        .evento:nth-child(odd)::after {
+            right: -11px;
+        }
+
+        .evento:nth-child(even)::after {
+            left: -11px;
+        }
+
+        .evento-conteudo {
+            background: #202020;
+
+            padding: 25px;
 
             border-radius: 8px;
 
-            transition: 0.3s;
+            transition: .3s;
         }
 
-        .card:hover {
-            transform: translateY(-10px);
+        .evento-conteudo:hover {
+            transform: scale(1.03);
 
             box-shadow:
-                0 10px 30px
-                rgba(227, 6, 19, 0.3);
+                0 10px 30px rgba(227, 6, 19, .2);
         }
 
-        .card h3 {
+        .ano {
+            color: var(--vermelho);
+
+            font-size: 25px;
+
+            font-weight: bold;
+        }
+
+        .evento h3 {
+            margin: 8px 0;
+        }
+
+        .evento p {
+            color: #aaa;
+        }
+
+
+        /* =====================================================
+           ESTÁDIO
+        ===================================================== */
+
+        #estadio {
+            background: #080808;
+        }
+
+        .estadio-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 50px;
+
+            align-items: center;
+        }
+
+        .estadio-imagem {
+            min-height: 400px;
+
+            border-radius: 15px;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,.5),
+                    rgba(0,0,0,.8)
+                ),
+                linear-gradient(
+                    135deg,
+                    #e30613,
+                    #222 50%,
+                    #050505
+                );
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 130px;
+
+            box-shadow:
+                inset 0 0 100px #000,
+                0 20px 40px rgba(0,0,0,.5);
+        }
+
+        .estadio-info h3 {
+            font-size: 30px;
+
+            color: var(--vermelho);
+
             margin-bottom: 15px;
-
-            color: #e30613;
         }
 
-        .card p {
+        .estadio-info p {
+            color: #ccc;
+
+            margin-bottom: 20px;
+        }
+
+        .estadio-lista {
+            list-style: none;
+        }
+
+        .estadio-lista li {
+            padding: 10px 0;
+
+            border-bottom: 1px solid #333;
+
             color: #bbb;
-
-            line-height: 1.6;
         }
 
-        /* =========================
+        .estadio-lista strong {
+            color: white;
+        }
+
+
+        /* =====================================================
            TÍTULOS
-        ========================= */
+        ===================================================== */
 
         #titulos {
-            background: #0b0b0b;
+            background: #141414;
         }
 
         .trofeus {
@@ -296,21 +540,23 @@ Claro. Abaixo está tudo em um único arquivo index.html, com HTML, CSS e JavaSc
         }
 
         .trofeu {
-            padding: 30px;
+            background: #202020;
 
-            background: #171717;
+            padding: 30px;
 
             text-align: center;
 
             border-radius: 10px;
 
-            border-bottom: 4px solid #e30613;
+            border-bottom: 4px solid var(--vermelho);
 
-            transition: 0.3s;
+            transition: .3s;
         }
 
         .trofeu:hover {
-            transform: scale(1.05);
+            transform: translateY(-10px);
+
+            background: #272727;
         }
 
         .trofeu .emoji {
@@ -318,136 +564,399 @@ Claro. Abaixo está tudo em um único arquivo index.html, com HTML, CSS e JavaSc
         }
 
         .trofeu h3 {
-            margin: 15px 0 10px;
+            margin: 15px 0;
         }
 
         .trofeu p {
             color: #999;
         }
 
-        /* =========================
-           ESTÁDIO
-        ========================= */
 
-        #estadio {
-            background: #151515;
+        /* =====================================================
+           JOGADORES
+        ===================================================== */
+
+        #jogadores {
+            background: #080808;
         }
 
-        .estadio-box {
-            max-width: 850px;
+        .jogadores-grid {
+            display: grid;
 
-            margin: 50px auto 0;
+            grid-template-columns:
+                repeat(3, 1fr);
 
-            padding: 40px;
+            gap: 25px;
+        }
 
-            display: flex;
-            align-items: center;
+        .jogador {
+            background: #181818;
 
-            gap: 30px;
-
-            background: #222;
+            padding: 30px;
 
             border-radius: 10px;
 
-            border: 1px solid #333;
-        }
-
-        .estadio-icone {
-            font-size: 80px;
-        }
-
-        .estadio-box h3 {
-            color: #e30613;
-
-            margin-bottom: 10px;
-
-            font-size: 25px;
-        }
-
-        .estadio-box p {
-            color: #ccc;
-
-            line-height: 1.7;
-        }
-
-        /* =========================
-           CURIOSIDADE
-        ========================= */
-
-        #curiosidade {
             text-align: center;
+
+            border: 1px solid #292929;
+
+            transition: .3s;
+
+            cursor: pointer;
+        }
+
+        .jogador:hover {
+            transform: translateY(-8px);
+
+            border-color: var(--vermelho);
+        }
+
+        .jogador-avatar {
+            width: 100px;
+            height: 100px;
+
+            margin: auto;
+
+            border-radius: 50%;
 
             background:
                 linear-gradient(
                     135deg,
-                    #e30613,
-                    #970009
+                    var(--vermelho),
+                    #300000
                 );
-        }
 
-        #curiosidade .linha {
-            background: white;
-        }
+            display: flex;
 
-        #curiosidade p {
-            margin: 20px 0;
-        }
+            align-items: center;
+            justify-content: center;
 
-        #mensagem {
-            min-height: 40px;
-
-            font-size: 25px;
+            font-size: 40px;
 
             font-weight: bold;
         }
 
-        /* =========================
-           RODAPÉ
-        ========================= */
+        .jogador h3 {
+            margin-top: 20px;
+        }
 
-        footer {
+        .jogador .posicao {
+            color: var(--vermelho);
+
+            font-size: 14px;
+
+            font-weight: bold;
+        }
+
+        .jogador p {
+            color: #aaa;
+
+            margin-top: 12px;
+        }
+
+
+        /* =====================================================
+           TORCIDA
+        ===================================================== */
+
+        #torcida {
+            background:
+                linear-gradient(
+                    135deg,
+                    #120000,
+                    #080808
+                );
+        }
+
+        .torcida-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 40px;
+
+            align-items: center;
+        }
+
+        .torcida-texto p {
+            color: #ccc;
+
+            margin-bottom: 20px;
+        }
+
+        .torcida-destaque {
+            background: #1b1b1b;
+
             padding: 35px;
 
-            background: #050505;
+            border-radius: 10px;
+
+            border-left: 5px solid var(--vermelho);
+        }
+
+        .torcida-destaque h3 {
+            color: var(--vermelho);
+
+            margin-bottom: 15px;
+        }
+
+        .canticos {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 15px;
+
+            margin-top: 20px;
+        }
+
+        .cantico {
+            background: #252525;
+
+            padding: 20px;
 
             text-align: center;
 
-            color: #888;
+            border-radius: 8px;
+        }
+
+
+        /* =====================================================
+           CURIOSIDADES
+        ===================================================== */
+
+        #curiosidades {
+            background: #111;
+        }
+
+        .curiosidades-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .curiosidade {
+            padding: 30px;
+
+            background: #202020;
+
+            border-radius: 10px;
+
+            cursor: pointer;
+
+            transition: .3s;
+        }
+
+        .curiosidade:hover {
+            background: var(--vermelho);
+
+            transform: translateY(-8px);
+        }
+
+        .curiosidade span {
+            font-size: 40px;
+        }
+
+        .curiosidade h3 {
+            margin: 15px 0;
+        }
+
+        .curiosidade p {
+            color: #aaa;
+        }
+
+        .curiosidade:hover p {
+            color: white;
+        }
+
+
+        /* =====================================================
+           QUIZ
+        ===================================================== */
+
+        #quiz {
+            background: var(--vermelho);
+
+            text-align: center;
+        }
+
+        #quiz .linha {
+            background: white;
+        }
+
+        .quiz-box {
+            max-width: 700px;
+
+            margin: auto;
+
+            background: #090909;
+
+            padding: 35px;
+
+            border-radius: 12px;
+        }
+
+        .pergunta {
+            font-size: 22px;
+
+            font-weight: bold;
+
+            margin-bottom: 25px;
+        }
+
+        .opcoes {
+            display: grid;
+
+            gap: 12px;
+        }
+
+        .opcao {
+            width: 100%;
+
+            padding: 14px;
+
+            background: #222;
+
+            color: white;
+
+            border: 1px solid #444;
+
+            border-radius: 5px;
+
+            cursor: pointer;
+
+            transition: .3s;
+        }
+
+        .opcao:hover {
+            background: var(--vermelho);
+        }
+
+        #resultado-quiz {
+            margin-top: 25px;
+
+            font-size: 20px;
+
+            font-weight: bold;
+        }
+
+
+        /* =====================================================
+           MODAL
+        ===================================================== */
+
+        .modal {
+            display: none;
+
+            position: fixed;
+
+            z-index: 10000;
+
+            inset: 0;
+
+            background: rgba(0,0,0,.85);
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+        }
+
+        .modal.ativo {
+            display: flex;
+        }
+
+        .modal-conteudo {
+            max-width: 650px;
+
+            width: 100%;
+
+            background: #1b1b1b;
+
+            padding: 40px;
+
+            border-radius: 10px;
+
+            position: relative;
+
+            border-top: 5px solid var(--vermelho);
+
+            animation: aparecer .3s ease;
+        }
+
+        .fechar {
+            position: absolute;
+
+            right: 20px;
+            top: 15px;
+
+            background: none;
+            border: none;
+
+            color: white;
+
+            font-size: 30px;
+
+            cursor: pointer;
+        }
+
+        .modal-conteudo h2 {
+            color: var(--vermelho);
+
+            margin-bottom: 20px;
+        }
+
+        .modal-conteudo p {
+            color: #ccc;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            background: #050505;
+
+            padding: 40px;
+
+            text-align: center;
+
+            color: #777;
         }
 
         footer strong {
-            color: #e30613;
+            color: var(--vermelho);
         }
 
-        /* =========================
-           ANIMAÇÃO
-        ========================= */
+
+        /* =====================================================
+           ANIMAÇÕES
+        ===================================================== */
 
         @keyframes aparecer {
+
             from {
                 opacity: 0;
-                transform: scale(0.7);
+                transform: scale(.8);
             }
 
             to {
                 opacity: 1;
                 transform: scale(1);
             }
+
         }
 
-        .animar {
-            animation: aparecer 0.5s ease;
-        }
 
-        /* =========================
-           CELULAR
-        ========================= */
+        /* =====================================================
+           RESPONSIVIDADE
+        ===================================================== */
 
-        @media (max-width: 800px) {
-
-            nav h1 {
-                font-size: 16px;
-            }
+        @media (max-width: 900px) {
 
             .menu-btn {
                 display: block;
@@ -458,7 +967,7 @@ Claro. Abaixo está tudo em um único arquivo index.html, com HTML, CSS e JavaSc
 
                 position: absolute;
 
-                top: 83px;
+                top: 78px;
                 left: 0;
 
                 width: 100%;
@@ -476,11 +985,16 @@ Claro. Abaixo está tudo em um único arquivo index.html, com HTML, CSS e JavaSc
                 display: flex;
             }
 
-            .hero h2 {
-                font-size: 60px;
+            .nome-clube {
+                font-size: 16px;
             }
 
-            .cards {
+            .numeros-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .estadio-grid,
+            .torcida-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -488,61 +1002,107 @@ Claro. Abaixo está tudo em um único arquivo index.html, com HTML, CSS e JavaSc
                 grid-template-columns: 1fr 1fr;
             }
 
-            .estadio-box {
-                flex-direction: column;
-
-                text-align: center;
+            .jogadores-grid {
+                grid-template-columns: 1fr 1fr;
             }
+
+            .curiosidades-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
         }
 
-        @media (max-width: 500px) {
 
-            .logo {
-                width: 45px;
-                height: 45px;
+        @media (max-width: 650px) {
 
-                font-size: 14px;
+            section {
+                padding: 70px 0;
             }
 
-            .hero h2 {
-                font-size: 45px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
-
-            section h2 {
+            .titulo-secao {
                 font-size: 32px;
             }
 
-            .trofeus {
+            .numeros-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .trofeus,
+            .jogadores-grid,
+            .curiosidades-grid {
                 grid-template-columns: 1fr;
             }
+
+            .timeline::before {
+                left: 10px;
+            }
+
+            .evento,
+            .evento:nth-child(even),
+            .evento:nth-child(odd) {
+                width: 100%;
+
+                left: 0;
+
+                padding-left: 40px;
+
+                text-align: left;
+            }
+
+            .evento::after,
+            .evento:nth-child(odd)::after,
+            .evento:nth-child(even)::after {
+                left: 1px;
+                right: auto;
+            }
+
+            .estadio-imagem {
+                min-height: 280px;
+
+                font-size: 90px;
+            }
+
+            .canticos {
+                grid-template-columns: 1fr;
+            }
+
+            .botao-secundario {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
-    <!-- =========================
-         CABEÇALHO
-    ========================== -->
+
+    <!-- =====================================================
+         MENU
+    ====================================================== -->
 
     <header>
 
-        <nav>
+        <nav class="container">
 
             <div class="logo">
                 CAP
             </div>
 
-            <h1>Athletico Paranaense</h1>
+            <div class="nome-clube">
+                Athletico Paranaense
+            </div>
 
             <button
                 class="menu-btn"
                 onclick="abrirMenu()">
+
                 ☰
+
             </button>
 
             <ul id="menu">
@@ -556,11 +1116,27 @@ Claro. Abaixo está tudo em um único arquivo index.html, com HTML, CSS e JavaSc
                 </li>
 
                 <li>
+                    <a href="#estadio">Estádio</a>
+                </li>
+
+                <li>
                     <a href="#titulos">Títulos</a>
                 </li>
 
                 <li>
-                    <a href="#estadio">Estádio</a>
+                    <a href="#jogadores">Jogadores</a>
+                </li>
+
+                <li>
+                    <a href="#torcida">Torcida</a>
+                </li>
+
+                <li>
+                    <a href="#curiosidades">Curiosidades</a>
+                </li>
+
+                <li>
+                    <a href="#quiz">Quiz</a>
                 </li>
 
             </ul>
@@ -570,160 +1146,291 @@ Claro. Abaixo está tudo em um único arquivo index.html, com HTML, CSS e JavaSc
     </header>
 
 
-    <!-- =========================
-         CONTEÚDO
-    ========================== -->
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
 
-    <main>
+    <section
+        id="inicio"
+        class="hero">
 
-        <!-- INÍCIO -->
+        <div class="hero-content">
 
-        <section
-            id="inicio"
-            class="hero">
+            <small>
+                CLUBE ATHLETICO PARANAENSE
+            </small>
 
-            <div class="hero-content">
+            <h1>
+                FURACÃO
+            </h1>
 
-                <small>
-                    CLUBE ATHLETICO PARANAENSE
-                </small>
+            <p>
+                Uma jornada pela história, pelas conquistas,
+                pelos ídolos e pela paixão rubro-negra.
+            </p>
 
-                <h2>
-                    FURACÃO
-                </h2>
+            <a
+                href="#historia"
+                class="botao">
+
+                Explorar história
+
+            </a>
+
+            <a
+                href="#quiz"
+                class="botao botao-secundario">
+
+                Fazer o quiz
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         NÚMEROS
+    ====================================================== -->
+
+    <section class="numeros">
+
+        <div class="container numeros-grid">
+
+            <div class="numero">
+
+                <h3 class="contador"
+                    data-numero="1924">
+
+                    0
+
+                </h3>
 
                 <p>
-                    Paixão, tradição e força rubro-negra.
-                    Conheça um pouco mais sobre o
-                    Athletico Paranaense.
+                    Ano de fundação
                 </p>
-
-                <a
-                    href="#historia"
-                    class="botao">
-
-                    Conheça o clube
-
-                </a>
 
             </div>
 
-        </section>
+            <div class="numero">
 
+                <h3 class="contador"
+                    data-numero="1">
 
-        <!-- HISTÓRIA -->
+                    0
 
-        <section id="historia">
+                </h3>
 
-            <div class="container">
-
-                <h2>
-                    História
-                </h2>
-
-                <div class="linha"></div>
-
-                <p class="texto">
-                    O Club Athletico Paranaense é um clube
-                    de futebol brasileiro da cidade de Curitiba,
-                    no Paraná. Fundado em 26 de março de 1924,
-                    o clube construiu uma história importante
-                    no futebol brasileiro.
+                <p>
+                    Campeonato Brasileiro
                 </p>
 
-                <p class="texto">
-                    Conhecido como Furacão, o clube tem como
-                    suas cores tradicionais o vermelho e o preto.
+            </div>
+
+            <div class="numero">
+
+                <h3 class="contador"
+                    data-numero="2">
+
+                    0
+
+                </h3>
+
+                <p>
+                    Sul-Americanas
                 </p>
 
+            </div>
 
-                <div class="cards">
+            <div class="numero">
 
-                    <div class="card">
+                <h3 class="contador"
+                    data-numero="1">
+
+                    0
+
+                </h3>
+
+                <p>
+                    Copa do Brasil
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         HISTÓRIA
+    ====================================================== -->
+
+    <section id="historia">
+
+        <div class="container">
+
+            <h2 class="titulo-secao">
+                História do Furacão
+            </h2>
+
+            <div class="linha"></div>
+
+
+            <div class="historia-intro">
+
+                <p>
+                    O Club Athletico Paranaense foi fundado
+                    em 26 de março de 1924, em Curitiba,
+                    no Paraná. Ao longo de sua trajetória,
+                    o clube passou por diferentes períodos
+                    de crescimento e transformação.
+                </p>
+
+                <p>
+                    A identidade rubro-negra, o apelido
+                    "Furacão" e a busca por modernização
+                    tornaram-se elementos marcantes da
+                    história do clube.
+                </p>
+
+                <p>
+                    A partir das décadas seguintes, o
+                    Athletico passou a conquistar espaço
+                    cada vez maior no cenário nacional,
+                    culminando em títulos importantes
+                    no século XXI.
+                </p>
+
+            </div>
+
+
+            <div class="timeline">
+
+
+                <div class="evento">
+
+                    <div class="evento-conteudo">
+
+                        <div class="ano">
+                            1924
+                        </div>
 
                         <h3>
-                            🔴⚫ Identidade
+                            Fundação
                         </h3>
 
                         <p>
-                            O vermelho e o preto são símbolos
-                            marcantes da identidade rubro-negra.
-                        </p>
-
-                    </div>
-
-
-                    <div class="card">
-
-                        <h3>
-                            🌪️ Furacão
-                        </h3>
-
-                        <p>
-                            O apelido Furacão representa a força,
-                            velocidade e intensidade do clube.
-                        </p>
-
-                    </div>
-
-
-                    <div class="card">
-
-                        <h3>
-                            🏆 Tradição
-                        </h3>
-
-                        <p>
-                            O Athletico possui importantes
-                            conquistas no futebol nacional
-                            e internacional.
+                            Nasce o Club Athletico Paranaense,
+                            dando início à trajetória do clube
+                            rubro-negro de Curitiba.
                         </p>
 
                     </div>
 
                 </div>
 
-            </div>
 
-        </section>
+                <div class="evento">
 
+                    <div class="evento-conteudo">
 
-        <!-- TÍTULOS -->
-
-        <section id="titulos">
-
-            <div class="container">
-
-                <h2>
-                    Principais títulos
-                </h2>
-
-                <div class="linha"></div>
-
-
-                <div class="trofeus">
-
-                    <div class="trofeu">
-
-                        <div class="emoji">
-                            🏆
+                        <div class="ano">
+                            1949
                         </div>
 
                         <h3>
-                            Campeonato Brasileiro
+                            Surge o Furacão
                         </h3>
 
                         <p>
-                            2001
+                            Uma campanha marcante no
+                            Campeonato Paranaense ajudou
+                            a consolidar o apelido
+                            "Furacão".
                         </p>
 
                     </div>
 
+                </div>
 
-                    <div class="trofeu">
 
-                        <div class="emoji">
-                            🏆
+                <div class="evento">
+
+                    <div class="evento-conteudo">
+
+                        <div class="ano">
+                            1983
+                        </div>
+
+                        <h3>
+                            Nova geração
+                        </h3>
+
+                        <p>
+                            O clube vive uma fase de renovação
+                            e começa a construir uma estrutura
+                            cada vez mais profissional.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="evento">
+
+                    <div class="evento-conteudo">
+
+                        <div class="ano">
+                            1999
+                        </div>
+
+                        <h3>
+                            Novo estádio
+                        </h3>
+
+                        <p>
+                            A Arena da Baixada passa por
+                            uma grande transformação,
+                            tornando-se símbolo da modernização
+                            do clube.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="evento">
+
+                    <div class="evento-conteudo">
+
+                        <div class="ano">
+                            2001
+                        </div>
+
+                        <h3>
+                            Campeão Brasileiro
+                        </h3>
+
+                        <p>
+                            O Athletico conquista pela primeira
+                            vez o Campeonato Brasileiro.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="evento">
+
+                    <div class="evento-conteudo">
+
+                        <div class="ano">
+                            2019
                         </div>
 
                         <h3>
@@ -731,41 +1438,30 @@ Claro. Abaixo está tudo em um único arquivo index.html, com HTML, CSS e JavaSc
                         </h3>
 
                         <p>
-                            2019
+                            O Furacão conquista a Copa do Brasil
+                            pela primeira vez.
                         </p>
 
                     </div>
 
+                </div>
 
-                    <div class="trofeu">
 
-                        <div class="emoji">
-                            🏆
+                <div class="evento">
+
+                    <div class="evento-conteudo">
+
+                        <div class="ano">
+                            2018 / 2021
                         </div>
 
                         <h3>
-                            Copa Sul-Americana
+                            América do Sul
                         </h3>
 
                         <p>
-                            2018 e 2021
-                        </p>
-
-                    </div>
-
-
-                    <div class="trofeu">
-
-                        <div class="emoji">
-                            🏆
-                        </div>
-
-                        <h3>
-                            Campeonato Paranaense
-                        </h3>
-
-                        <p>
-                            Diversas conquistas
+                            O clube conquista duas edições
+                            da Copa Sul-Americana.
                         </p>
 
                     </div>
@@ -774,45 +1470,496 @@ Claro. Abaixo está tudo em um único arquivo index.html, com HTML, CSS e JavaSc
 
             </div>
 
-        </section>
+        </div>
+
+    </section>
 
 
-        <!-- ESTÁDIO -->
+    <!-- =====================================================
+         ESTÁDIO
+    ====================================================== -->
 
-        <section id="estadio">
+    <section id="estadio">
 
-            <div class="container">
+        <div class="container">
 
-                <h2>
-                    Ligga Arena
-                </h2>
+            <h2 class="titulo-secao">
+                A casa do Furacão
+            </h2>
 
-                <div class="linha"></div>
-
-                <p class="texto">
-                    A Ligga Arena é a casa do Athletico
-                    Paranaense e está localizada em Curitiba,
-                    no Paraná.
-                </p>
+            <div class="linha"></div>
 
 
-                <div class="estadio-box">
+            <div class="estadio-grid">
 
-                    <div class="estadio-icone">
-                        🏟️
+                <div class="estadio-imagem">
+                    🏟️
+                </div>
+
+
+                <div class="estadio-info">
+
+                    <h3>
+                        Ligga Arena
+                    </h3>
+
+                    <p>
+                        Localizada em Curitiba, a Arena da
+                        Baixada é uma das construções mais
+                        importantes da história moderna do
+                        Athletico.
+                    </p>
+
+                    <p>
+                        O estádio passou por grandes obras
+                        de modernização e recebeu partidas
+                        da Copa do Mundo de 2014.
+                    </p>
+
+                    <ul class="estadio-lista">
+
+                        <li>
+                            <strong>Local:</strong>
+                            Curitiba - Paraná
+                        </li>
+
+                        <li>
+                            <strong>Conhecida como:</strong>
+                            Arena da Baixada
+                        </li>
+
+                        <li>
+                            <strong>Casa:</strong>
+                            Athletico Paranaense
+                        </li>
+
+                        <li>
+                            <strong>Evento internacional:</strong>
+                            Copa do Mundo de 2014
+                        </li>
+
+                    </ul>
+
+                    <br>
+
+                    <button
+                        class="botao"
+                        onclick="abrirModal(
+                        'Ligga Arena',
+                        'A Ligga Arena, conhecida historicamente como Arena da Baixada, é a casa do Athletico Paranaense e um dos símbolos da modernização do clube. O estádio recebeu partidas da Copa do Mundo FIFA de 2014.')">
+
+                        Saiba mais
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         TÍTULOS
+    ====================================================== -->
+
+    <section id="titulos">
+
+        <div class="container">
+
+            <h2 class="titulo-secao">
+                Títulos
+            </h2>
+
+            <div class="linha"></div>
+
+
+            <div class="trofeus">
+
+
+                <div class="trofeu">
+
+                    <div class="emoji">
+                        🏆
                     </div>
 
-                    <div>
+                    <h3>
+                        Campeonato Brasileiro
+                    </h3>
 
-                        <h3>
-                            A casa do Furacão
-                        </h3>
+                    <p>
+                        2001
+                    </p>
 
-                        <p>
-                            O estádio recebe os jogos do Athletico
-                            e também já foi palco de grandes
-                            eventos esportivos.
-                        </p>
+                    <br>
+
+                    <button
+                        class="botao"
+                        onclick="abrirModal(
+                        'Campeonato Brasileiro de 2001',
+                        'O Athletico conquistou o Campeonato Brasileiro de 2001, um dos maiores títulos da história do clube.')">
+
+                        Detalhes
+
+                    </button>
+
+                </div>
+
+
+                <div class="trofeu">
+
+                    <div class="emoji">
+                        🏆
+                    </div>
+
+                    <h3>
+                        Copa do Brasil
+                    </h3>
+
+                    <p>
+                        2019
+                    </p>
+
+                    <br>
+
+                    <button
+                        class="botao"
+                        onclick="abrirModal(
+                        'Copa do Brasil de 2019',
+                        'Em 2019, o Athletico conquistou a Copa do Brasil pela primeira vez, marcando mais um capítulo importante na história do clube.')">
+
+                        Detalhes
+
+                    </button>
+
+                </div>
+
+
+                <div class="trofeu">
+
+                    <div class="emoji">
+                        🏆
+                    </div>
+
+                    <h3>
+                        Copa Sul-Americana
+                    </h3>
+
+                    <p>
+                        2018 e 2021
+                    </p>
+
+                    <br>
+
+                    <button
+                        class="botao"
+                        onclick="abrirModal(
+                        'Copa Sul-Americana',
+                        'O Furacão conquistou a Copa Sul-Americana em 2018 e novamente em 2021, tornando-se bicampeão da competição continental.')">
+
+                        Detalhes
+
+                    </button>
+
+                </div>
+
+
+                <div class="trofeu">
+
+                    <div class="emoji">
+                        🏆
+                    </div>
+
+                    <h3>
+                        Campeonato Paranaense
+                    </h3>
+
+                    <p>
+                        Diversas conquistas
+                    </p>
+
+                    <br>
+
+                    <button
+                        class="botao"
+                        onclick="abrirModal(
+                        'Campeonato Paranaense',
+                        'O Athletico possui uma longa história de conquistas no Campeonato Paranaense, uma das competições mais tradicionais do estado.')">
+
+                        Detalhes
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         JOGADORES
+    ====================================================== -->
+
+    <section id="jogadores">
+
+        <div class="container">
+
+            <h2 class="titulo-secao">
+                Jogadores históricos
+            </h2>
+
+            <div class="linha"></div>
+
+            <p class="texto-centro">
+                Ao longo de sua história, o Athletico teve
+                diversos jogadores que marcaram época e
+                conquistaram a torcida.
+            </p>
+
+            <br><br>
+
+
+            <div class="jogadores-grid">
+
+
+                <div class="jogador"
+                     onclick="abrirModal(
+                     'Washington',
+                     'Washington Stecanela Cerqueira foi um dos grandes nomes da história do Athletico. Teve uma passagem marcante pelo clube e é lembrado pelo desempenho ofensivo.')">
+
+                    <div class="jogador-avatar">
+                        W
+                    </div>
+
+                    <h3>
+                        Washington
+                    </h3>
+
+                    <div class="posicao">
+                        ATACANTE
+                    </div>
+
+                    <p>
+                        Um dos grandes atacantes
+                        que vestiram a camisa rubro-negra.
+                    </p>
+
+                </div>
+
+
+                <div class="jogador"
+                     onclick="abrirModal(
+                     'Kléberson',
+                     'Kléberson foi revelado pelo Athletico e teve grande destaque no início dos anos 2000. Foi campeão brasileiro pelo clube em 2001.')">
+
+                    <div class="jogador-avatar">
+                        K
+                    </div>
+
+                    <h3>
+                        Kléberson
+                    </h3>
+
+                    <div class="posicao">
+                        MEIO-CAMPISTA
+                    </div>
+
+                    <p>
+                        Revelado pelo clube e campeão
+                        brasileiro em 2001.
+                    </p>
+
+                </div>
+
+
+                <div class="jogador"
+                     onclick="abrirModal(
+                     'Adriano Gabiru',
+                     'Adriano Gabiru foi um dos jogadores importantes da campanha do Campeonato Brasileiro de 2001 e é lembrado pelos torcedores do Furacão.')">
+
+                    <div class="jogador-avatar">
+                        A
+                    </div>
+
+                    <h3>
+                        Adriano Gabiru
+                    </h3>
+
+                    <div class="posicao">
+                        MEIA
+                    </div>
+
+                    <p>
+                        Nome marcante na conquista
+                        brasileira de 2001.
+                    </p>
+
+                </div>
+
+
+                <div class="jogador"
+                     onclick="abrirModal(
+                     'Fernandinho',
+                     'Fernandinho foi revelado pelo Athletico e construiu uma carreira internacional de destaque. Sua passagem pelo clube é lembrada como parte importante da formação de grandes talentos.')">
+
+                    <div class="jogador-avatar">
+                        F
+                    </div>
+
+                    <h3>
+                        Fernandinho
+                    </h3>
+
+                    <div class="posicao">
+                        MEIO-CAMPISTA
+                    </div>
+
+                    <p>
+                        Um dos grandes talentos revelados
+                        pelo clube.
+                    </p>
+
+                </div>
+
+
+                <div class="jogador"
+                     onclick="abrirModal(
+                     'Paulo Baier',
+                     'Paulo Baier teve uma passagem muito marcante pelo Athletico e tornou-se um dos jogadores queridos pela torcida durante sua passagem pelo clube.')">
+
+                    <div class="jogador-avatar">
+                        P
+                    </div>
+
+                    <h3>
+                        Paulo Baier
+                    </h3>
+
+                    <div class="posicao">
+                        MEIO-CAMPISTA
+                    </div>
+
+                    <p>
+                        Ídolo e jogador muito querido
+                        pela torcida.
+                    </p>
+
+                </div>
+
+
+                <div class="jogador"
+                     onclick="abrirModal(
+                     'Renan Lodi',
+                     'Renan Lodi foi formado nas categorias de base do Athletico e ganhou destaque no clube antes de seguir carreira internacional.')">
+
+                    <div class="jogador-avatar">
+                        R
+                    </div>
+
+                    <h3>
+                        Renan Lodi
+                    </h3>
+
+                    <div class="posicao">
+                        LATERAL
+                    </div>
+
+                    <p>
+                        Mais um jogador formado
+                        nas categorias de base.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         TORCIDA
+    ====================================================== -->
+
+    <section id="torcida">
+
+        <div class="container">
+
+            <h2 class="titulo-secao">
+                A torcida
+            </h2>
+
+            <div class="linha"></div>
+
+
+            <div class="torcida-grid">
+
+
+                <div class="torcida-texto">
+
+                    <p>
+                        A torcida do Athletico é conhecida
+                        pela forte identificação com as cores
+                        vermelho e preto e pela atmosfera
+                        criada nos jogos em Curitiba.
+                    </p>
+
+                    <p>
+                        A relação entre torcida e estádio
+                        tornou-se uma das marcas do clube,
+                        principalmente durante partidas
+                        decisivas.
+                    </p>
+
+                    <p>
+                        Cantos, bandeiras e mosaicos fazem
+                        parte da experiência dos torcedores
+                        nos jogos do Furacão.
+                    </p>
+
+                </div>
+
+
+                <div class="torcida-destaque">
+
+                    <h3>
+                        🔴⚫ Paixão Rubro-Negra
+                    </h3>
+
+                    <p>
+                        Para muitos torcedores, acompanhar
+                        o Athletico representa uma tradição
+                        passada entre gerações.
+                    </p>
+
+
+                    <div class="canticos">
+
+                        <div class="cantico">
+                            🌪️<br>
+                            Furacão
+                        </div>
+
+                        <div class="cantico">
+                            🔴⚫<br>
+                            Rubro-Negro
+                        </div>
+
+                        <div class="cantico">
+                            🏟️<br>
+                            Arquibancada
+                        </div>
+
+                        <div class="cantico">
+                            🏆<br>
+                            Conquistas
+                        </div>
 
                     </div>
 
@@ -820,45 +1967,254 @@ Claro. Abaixo está tudo em um único arquivo index.html, com HTML, CSS e JavaSc
 
             </div>
 
-        </section>
+        </div>
+
+    </section>
 
 
-        <!-- CURIOSIDADE -->
+    <!-- =====================================================
+         CURIOSIDADES
+    ====================================================== -->
 
-        <section id="curiosidade">
+    <section id="curiosidades">
 
-            <div class="container">
+        <div class="container">
 
-                <h2>
-                    Você é torcedor do Furacão?
-                </h2>
+            <h2 class="titulo-secao">
+                Curiosidades
+            </h2>
 
-                <div class="linha"></div>
+            <div class="linha"></div>
 
-                <p>
-                    Clique no botão abaixo!
-                </p>
 
-                <button
-                    class="botao"
-                    onclick="mostrarMensagem()">
+            <div class="curiosidades-grid">
 
-                    🔴⚫ Mostrar mensagem
 
-                </button>
+                <div class="curiosidade"
+                     onclick="abrirModal(
+                     'De onde vem Furacão?',
+                     'O apelido Furacão ficou associado ao clube após uma campanha marcante no Campeonato Paranaense de 1949.')">
 
-                <p id="mensagem"></p>
+                    <span>🌪️</span>
+
+                    <h3>
+                        Por que Furacão?
+                    </h3>
+
+                    <p>
+                        Descubra a origem do famoso apelido.
+                    </p>
+
+                </div>
+
+
+                <div class="curiosidade"
+                     onclick="abrirModal(
+                     'Copa do Mundo',
+                     'A Arena da Baixada recebeu quatro partidas durante a Copa do Mundo FIFA de 2014.')">
+
+                    <span>🌎</span>
+
+                    <h3>
+                        Copa do Mundo
+                    </h3>
+
+                    <p>
+                        O estádio foi palco de jogos
+                        da Copa de 2014.
+                    </p>
+
+                </div>
+
+
+                <div class="curiosidade"
+                     onclick="abrirModal(
+                     'Categorias de base',
+                     'O Athletico possui tradição na formação de jogadores. Diversos atletas revelados pelo clube chegaram ao futebol internacional.')">
+
+                    <span>⭐</span>
+
+                    <h3>
+                        Formação de talentos
+                    </h3>
+
+                    <p>
+                        O clube é conhecido por revelar
+                        grandes jogadores.
+                    </p>
+
+                </div>
+
+
+                <div class="curiosidade"
+                     onclick="abrirModal(
+                     'Cores',
+                     'O vermelho e o preto são as cores tradicionais do clube e estão diretamente ligados à identidade do Furacão.')">
+
+                    <span>🔴⚫</span>
+
+                    <h3>
+                        Cores rubro-negras
+                    </h3>
+
+                    <p>
+                        Vermelho e preto fazem parte
+                        da identidade do clube.
+                    </p>
+
+                </div>
+
+
+                <div class="curiosidade"
+                     onclick="abrirModal(
+                     '2001',
+                     'A conquista do Campeonato Brasileiro de 2001 é uma das maiores páginas da história do Athletico.')">
+
+                    <span>🏆</span>
+
+                    <h3>
+                        Ano de 2001
+                    </h3>
+
+                    <p>
+                        O Furacão conquistou seu primeiro
+                        Campeonato Brasileiro.
+                    </p>
+
+                </div>
+
+
+                <div class="curiosidade"
+                     onclick="abrirModal(
+                     'Conquistas internacionais',
+                     'O Athletico conquistou a Copa Sul-Americana em 2018 e 2021, tornando-se bicampeão da competição.')">
+
+                    <span>🌎</span>
+
+                    <h3>
+                        Bicampeão continental
+                    </h3>
+
+                    <p>
+                        O clube venceu duas vezes
+                        a Copa Sul-Americana.
+                    </p>
+
+                </div>
 
             </div>
 
-        </section>
+        </div>
 
-    </main>
+    </section>
 
 
-    <!-- =========================
-         RODAPÉ
-    ========================== -->
+    <!-- =====================================================
+         QUIZ
+    ====================================================== -->
+
+    <section id="quiz">
+
+        <div class="container">
+
+            <h2 class="titulo-secao">
+                Quiz do Furacão
+            </h2>
+
+            <div class="linha"></div>
+
+            <div class="quiz-box">
+
+                <div
+                    id="pergunta"
+                    class="pergunta">
+
+                    Em que ano o Athletico
+                    foi fundado?
+
+                </div>
+
+
+                <div class="opcoes">
+
+                    <button
+                        class="opcao"
+                        onclick="responder(1924)">
+
+                        1924
+
+                    </button>
+
+                    <button
+                        class="opcao"
+                        onclick="responder(1930)">
+
+                        1930
+
+                    </button>
+
+                    <button
+                        class="opcao"
+                        onclick="responder(1949)">
+
+                        1949
+
+                    </button>
+
+                    <button
+                        class="opcao"
+                        onclick="responder(1960)">
+
+                        1960
+
+                    </button>
+
+                </div>
+
+
+                <div id="resultado-quiz"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MODAL
+    ====================================================== -->
+
+    <div
+        id="modal"
+        class="modal">
+
+        <div class="modal-conteudo">
+
+            <button
+                class="fechar"
+                onclick="fecharModal()">
+
+                ×
+
+            </button>
+
+            <h2 id="modal-titulo">
+                Título
+            </h2>
+
+            <p id="modal-texto">
+                Texto
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
 
     <footer>
 
@@ -867,19 +2223,26 @@ Claro. Abaixo está tudo em um único arquivo index.html, com HTML, CSS e JavaSc
         </p>
 
         <p>
-            Site desenvolvido para fins educacionais.
+            Site educativo sobre a história do Furacão.
+        </p>
+
+        <p>
+            Desenvolvido em HTML, CSS e JavaScript.
         </p>
 
     </footer>
 
 
-    <!-- =========================
+    <!-- =====================================================
          JAVASCRIPT
-    ========================== -->
+    ====================================================== -->
 
     <script>
 
-        // Abrir e fechar menu no celular
+
+        /* =====================================================
+           MENU MOBILE
+        ===================================================== */
 
         function abrirMenu() {
 
@@ -891,48 +2254,240 @@ Claro. Abaixo está tudo em um único arquivo index.html, com HTML, CSS e JavaSc
         }
 
 
-        // Mensagem do torcedor
+        /* =====================================================
+           MODAL
+        ===================================================== */
 
-        function mostrarMensagem() {
+        function abrirModal(titulo, texto) {
 
-            const mensagem =
-                document.getElementById("mensagem");
+            const modal =
+                document.getElementById("modal");
 
-            mensagem.innerHTML =
-                "🌪️ VAMOS, FURACÃO! 🔴⚫";
+            const modalTitulo =
+                document.getElementById("modal-titulo");
 
-            mensagem.classList.remove("animar");
+            const modalTexto =
+                document.getElementById("modal-texto");
 
-            setTimeout(function () {
+            modalTitulo.innerText = titulo;
 
-                mensagem.classList.add("animar");
+            modalTexto.innerText = texto;
 
-            }, 10);
+            modal.classList.add("ativo");
 
         }
 
 
-        // Fechar menu ao clicar em um link
+        function fecharModal() {
+
+            document
+                .getElementById("modal")
+                .classList.remove("ativo");
+
+        }
+
+
+        /* Fecha o modal clicando fora */
+
+        document
+            .getElementById("modal")
+            .addEventListener(
+                "click",
+                function(event) {
+
+                    if (
+                        event.target ===
+                        document.getElementById("modal")
+                    ) {
+
+                        fecharModal();
+
+                    }
+
+                }
+            );
+
+
+        /* =====================================================
+           CONTADORES
+        ===================================================== */
+
+        const contadores =
+            document.querySelectorAll(".contador");
+
+        let contadorRodou = false;
+
+
+        function iniciarContadores() {
+
+            if (contadorRodou)
+                return;
+
+            contadorRodou = true;
+
+
+            contadores.forEach(
+                function(contador) {
+
+                    const alvo =
+                        Number(
+                            contador.dataset.numero
+                        );
+
+                    let atual = 0;
+
+                    const velocidade =
+                        Math.max(
+                            1,
+                            Math.floor(
+                                alvo / 50
+                            )
+                        );
+
+
+                    const intervalo =
+                        setInterval(
+                            function() {
+
+                                atual += velocidade;
+
+                                if (
+                                    atual >= alvo
+                                ) {
+
+                                    atual = alvo;
+
+                                    clearInterval(
+                                        intervalo
+                                    );
+
+                                }
+
+                                contador.innerText =
+                                    atual;
+
+                            },
+                            30
+                        );
+
+                }
+            );
+
+        }
+
+
+        /* Ativa os contadores quando chegam à tela */
+
+        const observador =
+            new IntersectionObserver(
+                function(entries) {
+
+                    entries.forEach(
+                        function(entry) {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                iniciarContadores();
+
+                            }
+
+                        }
+                    );
+
+                }
+            );
+
+
+        observador.observe(
+            document.querySelector(".numeros")
+        );
+
+
+        /* =====================================================
+           QUIZ
+        ===================================================== */
+
+        function responder(resposta) {
+
+            const resultado =
+                document.getElementById(
+                    "resultado-quiz"
+                );
+
+
+            if (resposta === 1924) {
+
+                resultado.innerHTML =
+                    "🎉 Resposta correta! O Athletico foi fundado em 26 de março de 1924.";
+
+                resultado.style.color =
+                    "#00ff88";
+
+            } else {
+
+                resultado.innerHTML =
+                    "❌ Resposta incorreta! Tente novamente.";
+
+                resultado.style.color =
+                    "#ff5555";
+
+            }
+
+        }
+
+
+        /* =====================================================
+           FECHAR MENU AO CLICAR
+        ===================================================== */
 
         const links =
-            document.querySelectorAll("#menu a");
+            document.querySelectorAll(
+                "#menu a"
+            );
 
-        links.forEach(function(link) {
 
-            link.addEventListener("click", function() {
+        links.forEach(
+            function(link) {
 
-                document
-                    .getElementById("menu")
-                    .classList.remove("ativo");
+                link.addEventListener(
+                    "click",
+                    function() {
 
-            });
+                        document
+                            .getElementById("menu")
+                            .classList.remove("ativo");
 
-        });
+                    }
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           ESC FECHA MODAL
+        ===================================================== */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (event.key === "Escape") {
+
+                    fecharModal();
+
+                }
+
+            }
+        );
 
     </script>
 
 </body>
+
 </html>
 
 
-Pronto: esse arquivo sozinho já contém HTML + CSS + JavaScript, sem precisar criar style.css ou script.js.
+Essa versão já fica com uma cara muito mais próxima de um site completo de fã do Athletico, e as partes de jogadores, títulos, curiosidades e estádio abrem informações sem precisar sair da página.

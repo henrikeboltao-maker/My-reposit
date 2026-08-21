@@ -1,0 +1,938 @@
+Claro. Abaixo está tudo em um único arquivo index.html, com HTML, CSS e JavaScript juntos. É só copiar, salvar como index.html e abrir no navegador.
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Athletico Paranaense | Furacão</title>
+
+    <style>
+        /* =========================
+           CONFIGURAÇÕES GERAIS
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b0b0b;
+            color: white;
+        }
+
+        /* =========================
+           MENU
+        ========================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: #050505;
+            border-bottom: 3px solid #e30613;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+
+            padding: 15px 25px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            width: 55px;
+            height: 55px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #e30613;
+
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        nav h1 {
+            font-size: 20px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        nav ul a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        nav ul a:hover {
+            color: #e30613;
+        }
+
+        .menu-btn {
+            display: none;
+
+            background: transparent;
+            border: none;
+
+            color: white;
+            font-size: 30px;
+
+            cursor: pointer;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 90vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.75),
+                    rgba(0, 0, 0, 0.95)
+                ),
+                linear-gradient(
+                    135deg,
+                    #e30613,
+                    #050505 60%
+                );
+        }
+
+        .hero-content {
+            max-width: 850px;
+            padding: 30px;
+        }
+
+        .hero small {
+            color: #e30613;
+
+            font-weight: bold;
+
+            letter-spacing: 4px;
+        }
+
+        .hero h2 {
+            margin: 20px 0;
+
+            font-size: 100px;
+            text-transform: uppercase;
+
+            text-shadow:
+                5px 5px 0 #e30613,
+                10px 10px 25px black;
+        }
+
+        .hero p {
+            font-size: 20px;
+            line-height: 1.6;
+
+            color: #ddd;
+
+            margin-bottom: 30px;
+        }
+
+        .botao {
+            display: inline-block;
+
+            padding: 15px 30px;
+
+            border-radius: 5px;
+
+            background: #e30613;
+            color: white;
+
+            border: 2px solid #e30613;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .botao:hover {
+            background: white;
+            color: #e30613;
+
+            transform: scale(1.05);
+        }
+
+        /* =========================
+           SEÇÕES
+        ========================= */
+
+        section {
+            padding: 90px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 40px;
+        }
+
+        .linha {
+            width: 80px;
+            height: 5px;
+
+            margin: 15px auto 40px;
+
+            background: #e30613;
+        }
+
+        .texto {
+            max-width: 900px;
+
+            margin: 15px auto;
+
+            color: #ccc;
+
+            text-align: center;
+
+            line-height: 1.8;
+
+            font-size: 17px;
+        }
+
+        /* =========================
+           HISTÓRIA
+        ========================= */
+
+        #historia {
+            background: #151515;
+        }
+
+        .cards {
+            margin-top: 50px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+        .card {
+            padding: 30px;
+
+            background: #222;
+
+            border-left: 5px solid #e30613;
+
+            border-radius: 8px;
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+
+            box-shadow:
+                0 10px 30px
+                rgba(227, 6, 19, 0.3);
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+
+            color: #e30613;
+        }
+
+        .card p {
+            color: #bbb;
+
+            line-height: 1.6;
+        }
+
+        /* =========================
+           TÍTULOS
+        ========================= */
+
+        #titulos {
+            background: #0b0b0b;
+        }
+
+        .trofeus {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+        }
+
+        .trofeu {
+            padding: 30px;
+
+            background: #171717;
+
+            text-align: center;
+
+            border-radius: 10px;
+
+            border-bottom: 4px solid #e30613;
+
+            transition: 0.3s;
+        }
+
+        .trofeu:hover {
+            transform: scale(1.05);
+        }
+
+        .trofeu .emoji {
+            font-size: 50px;
+        }
+
+        .trofeu h3 {
+            margin: 15px 0 10px;
+        }
+
+        .trofeu p {
+            color: #999;
+        }
+
+        /* =========================
+           ESTÁDIO
+        ========================= */
+
+        #estadio {
+            background: #151515;
+        }
+
+        .estadio-box {
+            max-width: 850px;
+
+            margin: 50px auto 0;
+
+            padding: 40px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 30px;
+
+            background: #222;
+
+            border-radius: 10px;
+
+            border: 1px solid #333;
+        }
+
+        .estadio-icone {
+            font-size: 80px;
+        }
+
+        .estadio-box h3 {
+            color: #e30613;
+
+            margin-bottom: 10px;
+
+            font-size: 25px;
+        }
+
+        .estadio-box p {
+            color: #ccc;
+
+            line-height: 1.7;
+        }
+
+        /* =========================
+           CURIOSIDADE
+        ========================= */
+
+        #curiosidade {
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #e30613,
+                    #970009
+                );
+        }
+
+        #curiosidade .linha {
+            background: white;
+        }
+
+        #curiosidade p {
+            margin: 20px 0;
+        }
+
+        #mensagem {
+            min-height: 40px;
+
+            font-size: 25px;
+
+            font-weight: bold;
+        }
+
+        /* =========================
+           RODAPÉ
+        ========================= */
+
+        footer {
+            padding: 35px;
+
+            background: #050505;
+
+            text-align: center;
+
+            color: #888;
+        }
+
+        footer strong {
+            color: #e30613;
+        }
+
+        /* =========================
+           ANIMAÇÃO
+        ========================= */
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: scale(0.7);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .animar {
+            animation: aparecer 0.5s ease;
+        }
+
+        /* =========================
+           CELULAR
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            nav h1 {
+                font-size: 16px;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+
+                position: absolute;
+
+                top: 83px;
+                left: 0;
+
+                width: 100%;
+
+                padding: 25px;
+
+                background: #050505;
+
+                flex-direction: column;
+
+                text-align: center;
+            }
+
+            nav ul.ativo {
+                display: flex;
+            }
+
+            .hero h2 {
+                font-size: 60px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .trofeus {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .estadio-box {
+                flex-direction: column;
+
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .logo {
+                width: 45px;
+                height: 45px;
+
+                font-size: 14px;
+            }
+
+            .hero h2 {
+                font-size: 45px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            section h2 {
+                font-size: 32px;
+            }
+
+            .trofeus {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         CABEÇALHO
+    ========================== -->
+
+    <header>
+
+        <nav>
+
+            <div class="logo">
+                CAP
+            </div>
+
+            <h1>Athletico Paranaense</h1>
+
+            <button
+                class="menu-btn"
+                onclick="abrirMenu()">
+                ☰
+            </button>
+
+            <ul id="menu">
+
+                <li>
+                    <a href="#inicio">Início</a>
+                </li>
+
+                <li>
+                    <a href="#historia">História</a>
+                </li>
+
+                <li>
+                    <a href="#titulos">Títulos</a>
+                </li>
+
+                <li>
+                    <a href="#estadio">Estádio</a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         CONTEÚDO
+    ========================== -->
+
+    <main>
+
+        <!-- INÍCIO -->
+
+        <section
+            id="inicio"
+            class="hero">
+
+            <div class="hero-content">
+
+                <small>
+                    CLUBE ATHLETICO PARANAENSE
+                </small>
+
+                <h2>
+                    FURACÃO
+                </h2>
+
+                <p>
+                    Paixão, tradição e força rubro-negra.
+                    Conheça um pouco mais sobre o
+                    Athletico Paranaense.
+                </p>
+
+                <a
+                    href="#historia"
+                    class="botao">
+
+                    Conheça o clube
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- HISTÓRIA -->
+
+        <section id="historia">
+
+            <div class="container">
+
+                <h2>
+                    História
+                </h2>
+
+                <div class="linha"></div>
+
+                <p class="texto">
+                    O Club Athletico Paranaense é um clube
+                    de futebol brasileiro da cidade de Curitiba,
+                    no Paraná. Fundado em 26 de março de 1924,
+                    o clube construiu uma história importante
+                    no futebol brasileiro.
+                </p>
+
+                <p class="texto">
+                    Conhecido como Furacão, o clube tem como
+                    suas cores tradicionais o vermelho e o preto.
+                </p>
+
+
+                <div class="cards">
+
+                    <div class="card">
+
+                        <h3>
+                            🔴⚫ Identidade
+                        </h3>
+
+                        <p>
+                            O vermelho e o preto são símbolos
+                            marcantes da identidade rubro-negra.
+                        </p>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <h3>
+                            🌪️ Furacão
+                        </h3>
+
+                        <p>
+                            O apelido Furacão representa a força,
+                            velocidade e intensidade do clube.
+                        </p>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <h3>
+                            🏆 Tradição
+                        </h3>
+
+                        <p>
+                            O Athletico possui importantes
+                            conquistas no futebol nacional
+                            e internacional.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TÍTULOS -->
+
+        <section id="titulos">
+
+            <div class="container">
+
+                <h2>
+                    Principais títulos
+                </h2>
+
+                <div class="linha"></div>
+
+
+                <div class="trofeus">
+
+                    <div class="trofeu">
+
+                        <div class="emoji">
+                            🏆
+                        </div>
+
+                        <h3>
+                            Campeonato Brasileiro
+                        </h3>
+
+                        <p>
+                            2001
+                        </p>
+
+                    </div>
+
+
+                    <div class="trofeu">
+
+                        <div class="emoji">
+                            🏆
+                        </div>
+
+                        <h3>
+                            Copa do Brasil
+                        </h3>
+
+                        <p>
+                            2019
+                        </p>
+
+                    </div>
+
+
+                    <div class="trofeu">
+
+                        <div class="emoji">
+                            🏆
+                        </div>
+
+                        <h3>
+                            Copa Sul-Americana
+                        </h3>
+
+                        <p>
+                            2018 e 2021
+                        </p>
+
+                    </div>
+
+
+                    <div class="trofeu">
+
+                        <div class="emoji">
+                            🏆
+                        </div>
+
+                        <h3>
+                            Campeonato Paranaense
+                        </h3>
+
+                        <p>
+                            Diversas conquistas
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ESTÁDIO -->
+
+        <section id="estadio">
+
+            <div class="container">
+
+                <h2>
+                    Ligga Arena
+                </h2>
+
+                <div class="linha"></div>
+
+                <p class="texto">
+                    A Ligga Arena é a casa do Athletico
+                    Paranaense e está localizada em Curitiba,
+                    no Paraná.
+                </p>
+
+
+                <div class="estadio-box">
+
+                    <div class="estadio-icone">
+                        🏟️
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            A casa do Furacão
+                        </h3>
+
+                        <p>
+                            O estádio recebe os jogos do Athletico
+                            e também já foi palco de grandes
+                            eventos esportivos.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CURIOSIDADE -->
+
+        <section id="curiosidade">
+
+            <div class="container">
+
+                <h2>
+                    Você é torcedor do Furacão?
+                </h2>
+
+                <div class="linha"></div>
+
+                <p>
+                    Clique no botão abaixo!
+                </p>
+
+                <button
+                    class="botao"
+                    onclick="mostrarMensagem()">
+
+                    🔴⚫ Mostrar mensagem
+
+                </button>
+
+                <p id="mensagem"></p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         RODAPÉ
+    ========================== -->
+
+    <footer>
+
+        <p>
+            🔴⚫ <strong>Athletico Paranaense</strong>
+        </p>
+
+        <p>
+            Site desenvolvido para fins educacionais.
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        // Abrir e fechar menu no celular
+
+        function abrirMenu() {
+
+            const menu =
+                document.getElementById("menu");
+
+            menu.classList.toggle("ativo");
+
+        }
+
+
+        // Mensagem do torcedor
+
+        function mostrarMensagem() {
+
+            const mensagem =
+                document.getElementById("mensagem");
+
+            mensagem.innerHTML =
+                "🌪️ VAMOS, FURACÃO! 🔴⚫";
+
+            mensagem.classList.remove("animar");
+
+            setTimeout(function () {
+
+                mensagem.classList.add("animar");
+
+            }, 10);
+
+        }
+
+
+        // Fechar menu ao clicar em um link
+
+        const links =
+            document.querySelectorAll("#menu a");
+
+        links.forEach(function(link) {
+
+            link.addEventListener("click", function() {
+
+                document
+                    .getElementById("menu")
+                    .classList.remove("ativo");
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
+
+
+Pronto: esse arquivo sozinho já contém HTML + CSS + JavaScript, sem precisar criar style.css ou script.js.
